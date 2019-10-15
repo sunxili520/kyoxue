@@ -1,6 +1,8 @@
 package com.example.demo.web;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,7 @@ public class TestController {
 	public String test(@PathVariable("p") String p,@PathVariable("v") Integer v) {
 		return "aaaaaaaaaaaaaaaaaaaaaaaa"+p+v;
 	}
-	@RequestMapping(name="/testvo",method={RequestMethod.POST})
+	@RequestMapping(value="/testvo",method={RequestMethod.POST})
 	public TestVO getTestVO() {
 		TestVO vo = new TestVO();
 		vo.setAge(13);
@@ -24,5 +26,22 @@ public class TestController {
 		vo.setSex(true);
 		vo.setDate(new Date());
 		return vo;
+	}
+	@RequestMapping(value="/list",method={RequestMethod.POST})
+	public List<TestVO> getTestList() {
+		List<TestVO> vos = new ArrayList<TestVO>();
+		TestVO vo = new TestVO();
+		vo.setAge(13);
+		vo.setName("薛邵");
+		vo.setSex(true);
+		vo.setDate(new Date());
+		vos.add(vo);
+		TestVO vo1 = new TestVO();
+		vo1.setAge(15);
+		vo1.setName("xiaoming");
+		vo1.setSex(false);
+		vo1.setDate(new Date());
+		vos.add(vo1);
+		return vos;
 	}
 }

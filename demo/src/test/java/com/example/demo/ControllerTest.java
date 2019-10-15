@@ -1,12 +1,12 @@
 package com.example.demo;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+//import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import org.hamcrest.Matchers;
+//import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
+//import org.springframework.http.MediaType;
 /**
  * mvc层测试
  * @author kyoxue
@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
  */
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+//import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.example.demo.web.TestController;
@@ -79,7 +79,8 @@ public class ControllerTest {
 		 */
 //		mockMvc.perform(MockMvcRequestBuilders.get("/test/hhhhhhh/99").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("hhhhhhh991")));
 		
-		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/testvo")).andReturn().getResponse().getContentAsString();
+//		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/testvo")).andReturn().getResponse().getContentAsString();
+		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/list")).andReturn().getResponse().getContentAsString();
 		System.out.println(returnJson);
 	}
 }
