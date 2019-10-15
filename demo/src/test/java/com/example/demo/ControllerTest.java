@@ -73,10 +73,13 @@ public class ControllerTest {
 			          
 			其中Body= aaaaaaaaaaaaaaaaaaaaaaaahhhhhhh99即我们预期打印的内容    
 		 */
-		mockMvc.perform(MockMvcRequestBuilders.get("/test/hhhhhhh/99").accept(MediaType.APPLICATION_JSON_UTF8)).andDo(print());
+//		mockMvc.perform(MockMvcRequestBuilders.get("/test/hhhhhhh/99").accept(MediaType.APPLICATION_JSON_UTF8)).andDo(print());
 		/**
 		 * 通过.addExpect来判断预期内容是否符合，如果符合控制台无信息，如果不符合，junit控制台会显示具体错误信息
 		 */
 //		mockMvc.perform(MockMvcRequestBuilders.get("/test/hhhhhhh/99").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("hhhhhhh991")));
+		
+		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/testvo")).andReturn().getResponse().getContentAsString();
+		System.out.println(returnJson);
 	}
 }
