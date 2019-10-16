@@ -80,7 +80,20 @@ public class ControllerTest {
 //		mockMvc.perform(MockMvcRequestBuilders.get("/test/hhhhhhh/99").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("hhhhhhh991")));
 		
 //		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/testvo")).andReturn().getResponse().getContentAsString();
-		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/list")).andReturn().getResponse().getContentAsString();
-		System.out.println(returnJson);
+//		String returnJson = mockMvc.perform(MockMvcRequestBuilders.post("/list")).andReturn().getResponse().getContentAsString();
+//		System.out.println(returnJson);
+		mockMvc.perform(MockMvcRequestBuilders.post("/v")
+//				.param("age", "28")
+//				.param("name", "aaa")
+//				.param("list", "[\"bb\",\"cc\"]")
+//				.param("card", "123456789012345678")
+//				.param("date", "2019-10-01 11:09:11")
+//				.param("weight", "99.99")
+//				.param("sex", "true")
+////				.param("tmp", "")
+////				.param("phone", "")
+//				.param("dicimal", "18")
+//				.param("email", "aaa")
+		);
 	}
 }

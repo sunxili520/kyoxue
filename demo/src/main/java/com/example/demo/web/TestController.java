@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,5 +47,14 @@ public class TestController {
 		vo1.setDate(new Date());
 		vos.add(vo1);
 		return vos;
+	}
+	@RequestMapping(value="/v")
+	public void validateTestVO(@Valid TestVO testVO,BindingResult result) {
+		if(result.hasErrors()){
+			List<ObjectError> list = result.getAllErrors();
+			for(ObjectError error:list){
+				System.out.println(error.getCode()+"-"+error.getDefaultMessage());
+			}
+		}
 	}
 }
