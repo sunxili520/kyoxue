@@ -14,8 +14,7 @@
 	   			//加入聊天
 	   			$("#user_join").on("click",function(){
 	   				var username = $("#in_user_name").val();
-	   				chart_url = chart_url+username;
-	   				ws = new WebSocket(chart_url);
+	   				ws = new WebSocket(chart_url+username);
 	   				ws.onopen = function(){
 	   					console.log("connect to websocket...");
 	   				};

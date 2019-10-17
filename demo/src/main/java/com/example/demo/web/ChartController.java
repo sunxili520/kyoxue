@@ -31,6 +31,10 @@ public class ChartController {
 	@OnOpen 
 	public void newSessionUser(@PathParam("username") String username,Session session){
 		//新用户添加到全局Map中
+		if (ONLINE_USER_SESSIONS.containsKey(username)) {
+			LOG.info(username+"用户名已经存在！");
+			return;
+		}
 		ONLINE_USER_SESSIONS.put(username,session);
 		String public_notice = "新用户["+username+"]加入了聊天...";
 		LOG.info(public_notice);
