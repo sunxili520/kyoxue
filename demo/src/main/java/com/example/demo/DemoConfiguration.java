@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import com.example.demo.filter.Test1Filter;
 import com.example.demo.filter.Test2Filter;
@@ -10,6 +11,12 @@ import com.example.demo.filter.Test2Filter;
 @Configuration
 public class DemoConfiguration {
 
+	//注入一个ServerEndpointExporterBean,该 Bean 会自动注册使用@ServerEndpoint 注解申明的 websocket endpoint
+	@Bean 
+	public ServerEndpointExporter serverEndpointExporter(){
+		return new ServerEndpointExporter();
+	}
+	
 	@Bean
 	public FilterRegistrationBean<Test1Filter> RegistTest1(){
 		//通过FilterRegistrationBean实例设置优先级可以生效

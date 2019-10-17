@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestJspController {
 
-	@GetMapping("/")
+	@GetMapping("/ttttt")
 	public String forward(Map<String,Object> model){
 		//map传递参数到前端输出
 		model.put("time",new Date());
