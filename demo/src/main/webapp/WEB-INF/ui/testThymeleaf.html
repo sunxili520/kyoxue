@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>thymeleaf test</title>
+	</head>
+	<body>
+		<!-- text展示后台变量 -->
+		<h1 th:text="${message }">thymeleaf test</h1>
+		<!-- 字符串拼接，用|变量、文本| -->
+		<p th:text="|${message },welcome.|"></p>
+		<!-- 条件判断，if和unless 条件一致，情况不同显示不同的文本  -->
+		<span th:if="${aaa == 'aaa'}" th:text="uuuuuuuuuu"></span>
+		<span th:unless="${aaa == 'aaa'}" th:text="ggggggggggggggg"></span>
+		<!-- 循环迭代数据 -->
+		<table>
+			<tr>
+				<td>No.</td>
+				<td>姓名</td>
+				<td>日期</td>
+			</tr>
+			<tr th:each="each,iterStat : ${users}">
+				<td th:text="${iterStat.count}"></td>
+				<td>
+					<!-- 链接引用页面变量 -->
+					<a th:text="${each.name}" th:href="@{'/a/'+${each.name}+'/'+${iterStat.count}}">link</a>
+				</td>
+				<td th:text="${#dates.format(each.date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+			</tr>
+		</table>
+		<a th:href="@{/a/hh/12}">test href</a>
+	</body>
+</html>
