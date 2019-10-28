@@ -17,14 +17,14 @@ import com.example.demo.entity.EntityTest;
 public class TestDaoImpl implements TestDao {
 	/** spring boot 自带JDBC api */
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private JdbcTemplate testApi;
 	@Override
 	public int insert(EntityTest test) throws RuntimeException {
 		// TODO Auto-generated method stub
 		String sql ="insert into t_test (createDatetime,remark) values (?,?)";
 		Date createDatetime = test.getCreateDatetime();
 		String remark = test.getRemark();
-		return jdbcTemplate.update(sql, createDatetime,remark);
+		return testApi.update(sql, createDatetime,remark);
 	}
 
 	@Override
@@ -34,14 +34,14 @@ public class TestDaoImpl implements TestDao {
 		Date createDatetime = test.getCreateDatetime();
 		String remark = test.getRemark();
 		Integer id = test.getId();
-		return jdbcTemplate.update(sql, createDatetime,remark,id);
+		return testApi.update(sql, createDatetime,remark,id);
 	}
 
 	@Override
 	public int delete(Integer id) throws RuntimeException {
 		// TODO Auto-generated method stub
 		String sql = "delete from t_test where id = ?";
-		return jdbcTemplate.update(sql, id);
+		return testApi.update(sql, id);
 	}
 
 	@Override
@@ -49,16 +49,16 @@ public class TestDaoImpl implements TestDao {
 		// TODO Auto-generated method stub
 		String sql = "select id,createDatetime,remark from t_test order by createDatetime desc";
 		//     这种方式通过自己映射的字段与数学集合来反馈
-		return jdbcTemplate.query(sql, new entityTestResult());
+		return testApi.query(sql, new entityTestResult());
 		//     这种方式通过框架自动映射来反馈
-//		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<EntityTest>(EntityTest.class));
+//		return testApi.query(sql, new BeanPropertyRowMapper<EntityTest>(EntityTest.class));
 	}
 
 	@Override
 	public EntityTest select(Integer id) throws RuntimeException {
 		// TODO Auto-generated method stub
 		String sql = "select id,createDatetime,remark from t_test where id=?";
-		return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<EntityTest>(EntityTest.class));
+		return testApi.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<EntityTest>(EntityTest.class));
 	}
 	/**
 	 * 字段与属性封装

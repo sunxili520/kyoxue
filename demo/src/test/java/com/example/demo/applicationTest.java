@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.dao.CommDao;
 import com.example.demo.dao.TestDao;
+import com.example.demo.entity.EntityConfig;
 import com.example.demo.entity.EntityTest;
 import com.example.demo.propertis.TestDemoPropertis;
 import com.example.demo.propertis.TestPropertis;
@@ -36,13 +38,21 @@ public class applicationTest {
 	private TestService testService;
 	@Autowired
 	private TestDao testDao;
+	@Autowired
+	private CommDao<EntityConfig> testReportDao;
+	@Test
+	public void testJDBC2()throws Exception{
+		EntityConfig entityConfig = testReportDao.select("QNRMD5");
+		assertNotEquals(entityConfig, null);
+		System.out.println(entityConfig.toString());
+	}
 	@Test
 	public void testJDBC()throws Exception{
 		/** add */
-//		EntityTest test = new EntityTest();
-//		test.setCreateDatetime(new Date());
-//		test.setRemark("test remark");
-//		testDao.insert(test);
+		EntityTest test = new EntityTest();
+		test.setCreateDatetime(new Date());
+		test.setRemark("test remark");
+		testDao.insert(test);
 		
 		/** find by primary key */
 //		EntityTest test = testDao.select(1);
