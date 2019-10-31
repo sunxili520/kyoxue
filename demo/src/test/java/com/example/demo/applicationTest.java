@@ -2,6 +2,7 @@ package com.example.demo;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -57,8 +58,11 @@ public class applicationTest {
 	@Test
 	public void testEntityOrderJPA()throws Exception{
 		EntityOrder vo = new EntityOrder();
-		vo.setOrderNo("aaaa");
+		vo.setOrderNo("bbb");
 		vo.setTime(new Date());
+		vo.setPlat(1);
+		vo.setShop(1);
+		vo.setPrice(new BigDecimal(100.00));
 		orderJPA.save(vo);
 	}
 	@Test
