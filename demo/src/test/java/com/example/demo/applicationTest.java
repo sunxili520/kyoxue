@@ -51,9 +51,12 @@ public class applicationTest {
 	private ReportJPADao reportJPA;
 	@Test
 	public void testEntityTestJPA()throws Exception{
-		EntityTestJPA vo = new EntityTestJPA();
-		vo.setTestName("ttt1");
-		testJPA.save(vo);
+//		EntityTestJPA vo = new EntityTestJPA();
+//		vo.setTestName("ttt1");
+//		testJPA.save(vo);
+		EntityTestJPA testJpa = testJPA.findByTestName("ttt1");
+		assertNotEquals(testJpa, null);
+		System.out.println(testJpa.toString());
 	}
 	@Test
 	public void testEntityOrderJPA()throws Exception{

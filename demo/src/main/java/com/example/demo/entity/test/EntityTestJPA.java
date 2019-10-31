@@ -13,6 +13,14 @@ public class EntityTestJPA {
 	private Long id;
 	@Column
 	private String testName;
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		StringBuffer buff  =new StringBuffer();
+		buff.append("id=").append(id).append(" ");
+		buff.append("testName=").append(testName).append(" ");
+		return buff.toString();
+	}
 	public Long getId() {
 		return id;
 	}

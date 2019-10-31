@@ -11,5 +11,5 @@ import com.example.demo.entity.test.EntityTestJPA;
  */
 @Qualifier("testJPA")
 public interface TestJPADao extends JpaRepository<EntityTestJPA, Long> {
-
+	public EntityTestJPA findByTestName(String testName)throws RuntimeException;
 }
