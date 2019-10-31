@@ -12,12 +12,20 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.AnnotationBeanNameGenerator;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.dao.CommDao;
 import com.example.demo.dao.TestDao;
+import com.example.demo.dao.order.OrderJPADao;
+import com.example.demo.dao.report.ReportJPADao;
+import com.example.demo.dao.test.TestJPADao;
 import com.example.demo.entity.EntityConfig;
 import com.example.demo.entity.EntityTest;
+import com.example.demo.entity.order.EntityOrder;
+import com.example.demo.entity.report.EntityReport;
+import com.example.demo.entity.test.EntityTestJPA;
 import com.example.demo.propertis.TestDemoPropertis;
 import com.example.demo.propertis.TestPropertis;
 import com.example.demo.service.TestService;
@@ -31,8 +39,34 @@ import com.example.demo.service.TestService;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//相同bean名冲突解决
+@ComponentScan(nameGenerator = AnnotationBeanNameGenerator.class)
 public class applicationTest {
-
+	@Resource
+	private TestJPADao testJPA;
+	@Resource
+	private OrderJPADao orderJPA;
+	@Resource
+	private ReportJPADao reportJPA;
+	@Test
+	public void testEntityTestJPA()throws Exception{
+		EntityTestJPA vo = new EntityTestJPA();
+		vo.setTestName("ttt1");
+		testJPA.save(vo);
+	}
+	@Test
+	public void testEntityOrderJPA()throws Exception{
+		EntityOrder vo = new EntityOrder();
+		vo.setOrderNo("aaaa");
+		vo.setTime(new Date());
+		orderJPA.save(vo);
+	}
+	@Test
+	public void testEntityReportJPA()throws Exception{
+		EntityReport vo = new EntityReport();
+		vo.setReportName("tttttt");
+		reportJPA.save(vo);
+	}
 	//注入的接口类
 	@Autowired
 	private TestService testService;

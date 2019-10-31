@@ -47,7 +47,7 @@ public class DemoDBConfiguration {
 	/**  定义API  */
 	//生成api对象 -- 订单操作
 	@Bean(name = "orderApi")
-	public JdbcTemplate orderApi(@Qualifier("orderDB") DataSource db) {
+	public JdbcTemplate orderApi(@Qualifier("testDB") DataSource db) {
 		return new JdbcTemplate(db);
 	}
 	//生成api对象 -- 业务操作
@@ -57,7 +57,7 @@ public class DemoDBConfiguration {
 	}
 	//生成api对象 -- test
 	@Bean(name = "testApi")
-	public JdbcTemplate testApi(@Qualifier("testDB") DataSource db) {
+	public JdbcTemplate testApi(@Qualifier("orderDB") DataSource db) {
 		return new JdbcTemplate(db);
 	}
 }
