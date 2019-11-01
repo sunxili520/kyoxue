@@ -1,15 +1,15 @@
 package com.example.demo.entity.test;
 
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.IndexColumn;
 
 @Entity(name="EntityTestJPA")
 @Table(name="jpa_test")
@@ -20,6 +20,22 @@ public class EntityTestJPA {
 	private Long id;
 	@Column
 	private String testName;
+	@Column
+	private Date time;
+	@Column
+	private Boolean flag;
+	public Boolean getFlag() {
+		return flag;
+	}
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

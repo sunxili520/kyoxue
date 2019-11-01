@@ -205,6 +205,26 @@ public class applicationTest {
 //		tests.forEach(each ->{
 //			System.out.println(each.toString());
 //		});
+		
+//		List<EntityTestJPA> tests = testJPA.findByIdBetween((long)1,(long)4);
+//		tests.forEach(e->{
+//			System.out.println(e.toString());
+//		});
+//		Date date = new Date();
+//		List<EntityTestJPA> tests = testJPA.findByTimeBefore(date);
+//		tests.forEach(e->{
+//			System.out.println(e.toString());
+//		});
+		//like需要自己输入%
+//		List<EntityTestJPA> tests = testJPA.findByTestNameLike("%a1");
+//		tests.forEach(e->{
+//			System.out.println(e.toString());
+//		});
+//		List<EntityTestJPA> tests = testJPA.findByTestNameIsNotNull();
+//		List<EntityTestJPA> tests = testJPA.findByTestNameIsNull();
+//		tests.forEach(e->{
+//			System.out.println(e.toString());
+//		});
 	}
 	@Test
 	public void testEntityOrderJPA()throws Exception{
