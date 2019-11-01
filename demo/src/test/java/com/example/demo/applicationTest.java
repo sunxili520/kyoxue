@@ -81,6 +81,15 @@ public class applicationTest {
 		EntityTestJPA vo = new EntityTestJPA();
 		vo.setTestName("ttt1");
 		//使用适配器查询
+		/**
+	     * ExampleMatcher.GenericPropertyMatchers.contains()      包含字段
+	     * ExampleMatcher.GenericPropertyMatchers.endsWith()      以该字段结尾
+	     * ExampleMatcher.GenericPropertyMatchers.startsWith()    以该字段开始
+	     * ExampleMatcher.GenericPropertyMatchers.caseSensitive() 区分大小写
+	     * ExampleMatcher.GenericPropertyMatchers.exact()         精准匹配
+	     * ExampleMatcher.GenericPropertyMatchers.ignoreCase()    忽略该字段
+	     * ExampleMatcher.GenericPropertyMatchers.regex()         正则匹配
+	     */
 //		//ps:withMatcher()只能静态访问，不能用ExampleMatcher实例访问，否则导致sql无效
 //		ExampleMatcher em = ExampleMatcher.matching()
 //		.withIgnorePaths("id")//忽略 不加入 where查询
