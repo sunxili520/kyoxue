@@ -10,6 +10,10 @@ import com.example.demo.entity.test.EntityTestJPA;
  * @date 2019年10月31日
  */
 @Qualifier("testJPA")
-public interface TestJPADao extends JpaRepository<EntityTestJPA, Long> {
+public interface TestJPADao extends JpaRepository<EntityTestJPA, Long>,TestJPADiyDao {
+	//findBy属性名
 	public EntityTestJPA findByTestName(String testName)throws RuntimeException;
+	//findBy属性名Or属性名
+	public EntityTestJPA findByTestNameOrId(String testName,Long id)throws RuntimeException;
+	
 }

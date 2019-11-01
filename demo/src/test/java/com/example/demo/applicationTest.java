@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotEquals;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -15,6 +16,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.dao.CommDao;
@@ -54,9 +62,59 @@ public class applicationTest {
 //		EntityTestJPA vo = new EntityTestJPA();
 //		vo.setTestName("ttt1");
 //		testJPA.save(vo);
-		EntityTestJPA testJpa = testJPA.findByTestName("ttt1");
-		assertNotEquals(testJpa, null);
-		System.out.println(testJpa.toString());
+		//findBy字段名
+//		EntityTestJPA testJpa = testJPA.findByTestName("ttt1");
+		
+		//findBy字段名Or字段名
+//		EntityTestJPA testJpa = testJPA.findByTestNameOrId("", (long)1);
+		
+		//简单示例查询findOne
+//		EntityTestJPA vo = new EntityTestJPA();
+//		vo.setId((long)1);
+//		//org.springframework.data.domain.Example
+//		Example<EntityTestJPA> ex = Example.of(vo); 
+//		EntityTestJPA jpa = testJPA.findOne(ex).get();
+//		assertNotEquals(jpa, null);
+//		System.out.println(jpa.toString());
+		
+		
+		EntityTestJPA vo = new EntityTestJPA();
+		vo.setTestName("ttt1");
+		//使用适配器查询
+//		//ps:withMatcher()只能静态访问，不能用ExampleMatcher实例访问，否则导致sql无效
+//		ExampleMatcher em = ExampleMatcher.matching()
+//		.withIgnorePaths("id")//忽略 不加入 where查询
+//		.withMatcher("testName", ExampleMatcher.GenericPropertyMatchers.startsWith());//t%
+////		.withMatcher("testName", ExampleMatcher.GenericPropertyMatchers.endsWith());//%t1
+////		.withMatcher("testName", ExampleMatcher.GenericPropertyMatchers.contains());//contain t1
+//		Example<EntityTestJPA> ex = Example.of(vo, em);
+//		List<EntityTestJPA> tests = testJPA.findAll(ex);
+//		assertNotEquals(null, tests);
+//		tests.forEach(each -> {
+//			System.out.println(each.toString());
+//		});
+		//page query
+//		Pageable pageable = PageRequest.of(0,2,new Sort(Sort.Direction.DESC,"id"));
+//		ExampleMatcher em = ExampleMatcher.matchingAll()
+//		.withMatcher("testName", ExampleMatcher.GenericPropertyMatchers.exact());//exact martch
+//		Example<EntityTestJPA> ex = Example.of(vo, em);
+//		Page<EntityTestJPA> tests = testJPA.findAll(ex,pageable);
+//		tests.forEach(x->{
+//			System.out.println(x.toString());
+//		});
+		//sort query
+//		Sort orders = new Sort(Sort.Direction.DESC,"id");
+//		ExampleMatcher em = ExampleMatcher.matchingAll()
+//		.withMatcher("testName", ExampleMatcher.GenericPropertyMatchers.exact());//exact martch
+//		Example<EntityTestJPA> ex = Example.of(vo, em);
+//		List<EntityTestJPA> tests = testJPA.findAll(ex,orders);
+//		tests.forEach(x->{
+//			System.out.println(x.toString());
+//		});
+		List<EntityTestJPA> tests = testJPA.findAllGreaterThan((long)1);
+		tests.forEach(x->{
+			System.out.println(x.toString());
+		});
 	}
 	@Test
 	public void testEntityOrderJPA()throws Exception{
