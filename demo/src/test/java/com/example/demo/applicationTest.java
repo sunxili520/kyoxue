@@ -135,12 +135,18 @@ public class applicationTest {
 		//hql查询返回的如果是一个字段，用Object接
 		//hql查询返回的如果是多条，在Object/Object[]外封装层List接
 		//通过Object或Object数组下标获取结果再填充到Bean中
-		List<Object[]> tests = testJPA.getByTestNameLikeHQL("%t1");
-		tests.forEach(x->{
-			EntityTestJPA y= new EntityTestJPA();
-			y.setId((long)x[0]);
-			y.setTestName(x[1].toString());
-			System.out.println(y.toString());
+//		List<Object[]> tests = testJPA.getByTestNameLikeHQL("%t1");
+//		tests.forEach(x->{
+//			EntityTestJPA y= new EntityTestJPA();
+//			y.setId((long)x[0]);
+//			y.setTestName(x[1].toString());
+//			System.out.println(y.toString());
+//		});
+		//get by hql
+		//select 对象 返回整个表直接映射到实体中
+		List<EntityTestJPA> tests = testJPA.getByTestNameLikeHQL2("%t1");
+		tests.forEach(each ->{
+			System.out.println(each.toString());
 		});
 	}
 	@Test

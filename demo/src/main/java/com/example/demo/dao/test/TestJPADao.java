@@ -24,4 +24,7 @@ public interface TestJPADao extends JpaRepository<EntityTestJPA, Long>,TestJPADi
 	//EntityTestJPA为Entity注解的值
 	@Query(value="select id,testName from com.example.demo.entity.test.EntityTestJPA where 1=1 and testName like ?1")
 	public List<Object[]> getByTestNameLikeHQL(String likeTestName)throws RuntimeException;
+	
+	@Query(value="select test from com.example.demo.entity.test.EntityTestJPA test where 1=1 and test.testName like ?1")
+	public List<EntityTestJPA> getByTestNameLikeHQL2(String likeTestName)throws RuntimeException;
 }
