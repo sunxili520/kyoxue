@@ -120,9 +120,27 @@ public class applicationTest {
 //		tests.forEach(x->{
 //			System.out.println(x.toString());
 //		});
-		List<EntityTestJPA> tests = testJPA.findAllGreaterThan((long)1);
+		//find by diy interface
+//		List<EntityTestJPA> tests = testJPA.findAllGreaterThan((long)1);
+//		tests.forEach(x->{
+//			System.out.println(x.toString());
+//		});
+		//get by orginal sql
+//		List<EntityTestJPA> tests = testJPA.getByTestNameLike("%t1");
+//		tests.forEach(x->{
+//			System.out.println(x.toString());
+//		});
+		//get by hql
+		//hql查询返回的如果是多个字段用Object[]数组接，下标对应sql顺序字段
+		//hql查询返回的如果是一个字段，用Object接
+		//hql查询返回的如果是多条，在Object/Object[]外封装层List接
+		//通过Object或Object数组下标获取结果再填充到Bean中
+		List<Object[]> tests = testJPA.getByTestNameLikeHQL("%t1");
 		tests.forEach(x->{
-			System.out.println(x.toString());
+			EntityTestJPA y= new EntityTestJPA();
+			y.setId((long)x[0]);
+			y.setTestName(x[1].toString());
+			System.out.println(y.toString());
 		});
 	}
 	@Test

@@ -4,8 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
-@Entity(name="jpa_test")
+import org.hibernate.annotations.IndexColumn;
+
+@Entity(name="EntityTestJPA")
+@Table(name="jpa_test")
 public class EntityTestJPA {
 
 	@Id
