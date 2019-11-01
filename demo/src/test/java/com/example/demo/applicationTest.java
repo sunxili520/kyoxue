@@ -3,6 +3,7 @@ package com.example.demo;
 import static org.junit.Assert.assertNotEquals;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -59,6 +60,62 @@ public class applicationTest {
 	private ReportJPADao reportJPA;
 	@Test
 	public void testEntityTestJPA()throws Exception{
+		//case exists by primary key     by crud api
+//		boolean flag = testJPA.existsById((long)2);
+//		System.out.println("primary key 2 is:"+flag);
+		
+		//case exists by primary key     by QueryByExampleExecutor api
+//		EntityTestJPA vo = new EntityTestJPA();
+//		vo.setId((long)4);
+//		Example<EntityTestJPA> ex = Example.of(vo);
+//		boolean flag = testJPA.exists(ex);
+//		System.out.println("primary key 2 is:"+flag);
+		
+		//total count calc by crud api
+//		long total = testJPA.count();
+//		System.out.println("total count:"+total);
+		
+		//delete by crud api
+//		EntityTestJPA test = testJPA.findById((long)4).get();
+//		System.out.println("current to delete:"+test.toString());
+//		testJPA.delete(test);
+//		System.out.println("delete finish...");
+		
+		//crud api find by primary keys
+//		List<Long> idlist = new ArrayList<Long>();
+//		idlist.add((long)1);
+//		idlist.add((long)2);
+//		Iterable<Long> ids = new ArrayList<Long>(idlist);
+//		List<EntityTestJPA> list = testJPA.findAllById(ids);
+//		list.forEach(each ->{
+//			System.out.println(each.toString());
+//		});
+		
+		//delete batch one unit
+//		List<Long> idlist = new ArrayList<Long>();
+//		idlist.add((long)1);
+//		idlist.add((long)2);
+//		Iterable<Long> ids = new ArrayList<Long>(idlist);
+//		List<EntityTestJPA> list = testJPA.findAllById(ids);
+//		Iterable<EntityTestJPA> entities = new ArrayList<EntityTestJPA>(list);
+//		testJPA.deleteInBatch(entities);
+//		System.out.println("delete in batch ok..");
+		
+		//synch data on db and cache
+//		testJPA.flush();
+		
+		//get by primary key
+		//if key not exists,it will throw exception org.hibernate.LazyInitializationException
+//		EntityTestJPA test = testJPA.getOne((long)4);
+//		System.out.println(test.toString());
+		
+		//QueryByExampleExecutor
+//		EntityTestJPA vo = new EntityTestJPA();
+//		vo.setId((long)4);
+//		Example<EntityTestJPA> ex = Example.of(vo);
+//		EntityTestJPA one = testJPA.findOne(ex).get();
+//		System.out.println(one.toString());
+		
 //		EntityTestJPA vo = new EntityTestJPA();
 //		vo.setTestName("ttt1");
 //		testJPA.save(vo);
@@ -78,8 +135,8 @@ public class applicationTest {
 //		System.out.println(jpa.toString());
 		
 		
-		EntityTestJPA vo = new EntityTestJPA();
-		vo.setTestName("ttt1");
+//		EntityTestJPA vo = new EntityTestJPA();
+//		vo.setTestName("ttt1");
 		//使用适配器查询
 		/**
 	     * ExampleMatcher.GenericPropertyMatchers.contains()      包含字段
@@ -144,10 +201,10 @@ public class applicationTest {
 //		});
 		//get by hql
 		//select 对象 返回整个表直接映射到实体中
-		List<EntityTestJPA> tests = testJPA.getByTestNameLikeHQL2("%t1");
-		tests.forEach(each ->{
-			System.out.println(each.toString());
-		});
+//		List<EntityTestJPA> tests = testJPA.getByTestNameLikeHQL2("%t1");
+//		tests.forEach(each ->{
+//			System.out.println(each.toString());
+//		});
 	}
 	@Test
 	public void testEntityOrderJPA()throws Exception{

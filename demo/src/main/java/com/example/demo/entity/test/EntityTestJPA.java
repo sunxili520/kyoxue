@@ -3,10 +3,12 @@ package com.example.demo.entity.test;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.IndexColumn;
 
 @Entity(name="EntityTestJPA")
@@ -14,7 +16,7 @@ import org.hibernate.annotations.IndexColumn;
 public class EntityTestJPA {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@Column
 	private String testName;
